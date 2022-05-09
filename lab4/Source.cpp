@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-struct Aud 
+struct Aud
 {
 	unsigned int build_id;
 	unsigned int aud_id;
@@ -10,7 +10,7 @@ struct Aud
 	bool desk;
 };
 
-Aud rand_Aud(int x=0,int y = 0)
+Aud rand_Aud(int x = 0, int y = 0)
 {
 	Aud data;
 	if (!x) { data.aud_id = rand() % 100; }
@@ -22,31 +22,31 @@ Aud rand_Aud(int x=0,int y = 0)
 	return data;
 }
 
-class List 
+class List
 {
 private:
 
 
 public:
 
-	
-	List() {}
-	
+
+	List();
+	~List();
 
 	void push_back(Aud data);
-
+	Aud& operator[](const int index);
 
 private:
-	
-	class Element 
+
+	class Element
 	{
 	public:
 		Aud data;
 		Element* next;
-		Element(Aud data, Element* next = nullptr)
+		Element(Aud data, Element* pnext = nullptr)
 		{
 			this->data = data;
-			this->next = next;
+			this->next = pnext;
 
 
 		}
@@ -56,7 +56,7 @@ private:
 
 	
 
-	
+
 };
 
 
@@ -65,35 +65,54 @@ List::List() {
 	head = nullptr;
 }
 
+List::~List()
+
+{
+}
+
+Aud& List::operator[](const int index)
+{
+	int n = 0;
+	Element* current = this->head;
+	while (current != nullptr)
+	{
+		if (n == index)
+		{
+			return current->data;
+		}
+		current = current->next;
+		n++;
+	}
+}
 
 void List::push_back(Aud data)
 {
 	if (head == nullptr)
 	{
 		head = new Element(data);
-
+		Size++;
 	}
 	else
 	{
 		Element* current = this->head;
 
-		while (current != nullptr)
+		while (current->next != nullptr)
 		{
 			current = current->next;
 
 		}
 		current->next = new Element(data);
-
+		Size++;
 	}
 }
 
 int main()
 {
+
 	List lst;
 	lst.push_back(rand_Aud());
+	lst.push_back(rand_Aud()); 
 	lst.push_back(rand_Aud());
-	lst.push_back(rand_Aud());
-	
-	
+	cout << lst[1].aud_id;
 
 }
