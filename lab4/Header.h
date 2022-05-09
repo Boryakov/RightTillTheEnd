@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-struct Aud 
+struct Aud
 {
 	unsigned int build_id;
 	unsigned int aud_id;
@@ -10,43 +10,34 @@ struct Aud
 	bool desk;
 };
 
-Aud rand_Aud(int x=0,int y = 0)
-{
-	Aud data;
-	if (!x) { data.aud_id = rand() % 100; }
-	else { data.aud_id = x; }
-	if (!y) { data.build_id = rand() % 100; }
-	else { data.build_id = y; }
-	data.chairs_count = rand() % 100;
-	data.desk = rand() % 2;
-	return data;
-}
+Aud rand_Aud(int x = 0, int y = 0);
 
-class List 
+
+class List
 {
 private:
 
 
 public:
 
-	
-	List() {}
-	
+
+	List();
+	~List();
 
 	void push_back(Aud data);
-
+	Aud& operator[](const int index);
 
 private:
-	
-	class Element 
+
+	class Element
 	{
 	public:
 		Aud data;
 		Element* next;
-		Element(Aud data, Element* next = nullptr)
+		Element(Aud data, Element* pnext = nullptr)
 		{
 			this->data = data;
-			this->next = next;
+			this->next = pnext;
 
 
 		}
@@ -54,46 +45,11 @@ private:
 	int Size;
 	Element* head;
 
-	
 
-	
+
+
 };
 
 
-List::List() {
-	Size = 0;
-	head = nullptr;
-}
 
 
-void List::push_back(Aud data)
-{
-	if (head == nullptr)
-	{
-		head = new Element(data);
-
-	}
-	else
-	{
-		Element* current = this->head;
-
-		while (current != nullptr)
-		{
-			current = current->next;
-
-		}
-		current->next = new Element(data);
-
-	}
-}
-
-int main()
-{
-	List lst;
-	lst.push_back(rand_Aud());
-	lst.push_back(rand_Aud());
-	lst.push_back(rand_Aud());
-	
-	
-
-}
