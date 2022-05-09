@@ -1,10 +1,10 @@
 #include "Header.h"
 
-Aud rand_Aud(int x , int y )
+Aud rand_Aud(int x , int y ) 
 {
 	unsigned int aud_id, build_id, chairs;
 	bool desk;
-	if (!x) { aud_id = rand() % 100; }
+	if (!x) { aud_id = rand() % 100; } // if parametr wasn't set , generate random id
 	else { aud_id = x; }
 	if (!y) { build_id = rand() % 100; }
 	else { build_id = y; }
@@ -14,8 +14,8 @@ Aud rand_Aud(int x , int y )
 	return data;
 };
 
-List::List() {
-	Size = 0;
+List::List() { 
+	Size = 0; 
 	head = nullptr;
 };
 
@@ -26,22 +26,22 @@ List::~List()
 
 Aud& List::operator[](const int index)
 {
-	int n = 0;
-	Element* current = this->head;
-	while (current != nullptr)
+	int n = 0; // counter of current element
+	Element* current = this->head;  // 1 element pointer
+	while (current != nullptr) 
 	{
 		if (n == index)
 		{
-			return current->data;
+			return current->data;  // if current index = input index, return data
 		}
-		current = current->next;
+		current = current->next; // move to next element
 		n++;
 	}
 };
 
 void List::push_back(Aud data)
 {
-	if (head == nullptr)
+	if (head == nullptr) // if no objects in list , add current as first
 	{
 		head = new Element(data);
 		Size++;
@@ -50,12 +50,12 @@ void List::push_back(Aud data)
 	{
 		Element* current = this->head;
 
-		while (current->next != nullptr)
+		while (current->next != nullptr) // finding last element
 		{
 			current = current->next;
 
 		}
-		current->next = new Element(data);
+		current->next = new Element(data); // creating new last element
 		Size++;
 	}
 };

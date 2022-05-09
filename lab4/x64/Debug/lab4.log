@@ -1,5 +1,2 @@
 ﻿  func_realizations.cpp
-  main.cpp
-  Generating Code...
 C:\Users\ltava\source\repos\lab4\lab4\func_realizations.cpp(40): warning C4715: 'List::operator[]': not all control paths return a value
-  lab4.vcxproj -> C:\Users\ltava\source\repos\lab4\x64\Debug\lab4.exe

@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-struct Aud
+struct Aud 
 {
 	unsigned int build_id;
 	unsigned int aud_id;
@@ -10,8 +10,8 @@ struct Aud
 	bool desk;
 };
 
-Aud rand_Aud(int x = 0, int y = 0);
-
+Aud rand_Aud(int x = 0, int y = 0); // function which generate random audience and 
+									// if necessary accepts parametrs build id and audience id
 
 class List
 {
@@ -21,11 +21,11 @@ private:
 public:
 
 
-	List();
-	~List();
+	List(); // list constructor
+	~List(); // list destructor
 
-	void push_back(Aud data);
-	Aud& operator[](const int index);
+	void push_back(Aud data); // function which add audience to the end of the list
+	Aud& operator[](const int index); // overloaded [] operator
 
 private:
 
@@ -34,7 +34,7 @@ private:
 	public:
 		Aud data;
 		Element* next;
-		Element(Aud data, Element* pnext = nullptr)
+		Element(Aud data, Element* pnext = nullptr) // List item constructor
 		{
 			this->data = data;
 			this->next = pnext;
@@ -42,7 +42,7 @@ private:
 
 		}
 	};
-	int Size;
+	int Size; // count audiences in list
 	Element* head;
 
 

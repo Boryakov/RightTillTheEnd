@@ -6,6 +6,6 @@ int main()
 	lst.push_back(rand_Aud());
 	lst.push_back(rand_Aud()); 
 	lst.push_back(rand_Aud());
-	cout << lst[1].aud_id;
+	cout << lst[-1].aud_id;
 
 }
