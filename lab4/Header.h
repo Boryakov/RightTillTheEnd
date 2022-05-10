@@ -41,6 +41,14 @@ public:
 
 	Aud find_aud_by_index(int index);
 
+	void delete_aud_by_index(int index);
+
+	void pop_front();
+
+	void clear_list();
+
+	void push_front(Aud data);
+
 private:
 
 	class Element

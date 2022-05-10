@@ -111,6 +111,50 @@ Aud List::find_aud_by_index(int index)
 	return x;
 }
 
+void List::delete_aud_by_index(int index)
+{
+	if (index == 1)
+	{
+		pop_front();
+	}
+	else
+	{
+		Element* previous = head;
+		for (int i = 1; i < index-1;i++)
+		{
+			previous = previous->next;
+		}
+		Element* to_delete = previous->next;
+		previous->next = to_delete->next;
+		delete to_delete;
+		Size--;
+	}
+	
+}
+
+void List::pop_front()
+{
+	Element* temp = head;
+	head = head->next;
+	delete temp;
+	Size--;
+}
+
+void List::clear_list()
+{
+	while (Size != 0)
+	{
+		pop_front();
+	}
+}
+
+void List::push_front(Aud data)
+{
+	head = new Element(data, head);
+	Size++;
+}
+
+
 bool operator==(Aud x, Aud y)
 {
 	if (x.aud_id == y.aud_id && x.build_id == y.build_id && x.chairs_count == y.chairs_count && x.desk == y.desk)
