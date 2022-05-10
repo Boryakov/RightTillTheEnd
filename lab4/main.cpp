@@ -55,8 +55,15 @@ int main()
 			unsigned int x;
 			cout << "Enter your index:";
 			cin >> x;
-			lst.delete_aud_by_index(x);
-			cout << "Audience was deleted" << endl;
+			if (0 < x <= lst.GetSize())
+			{
+				lst.delete_aud_by_index(x);
+				cout << "Audience was deleted" << endl;
+			}
+			else
+			{
+				cout << "Index is more than list size" << endl;
+			}
 			break;
 		}
 		case 'f':
