@@ -14,6 +14,15 @@ Aud rand_Aud(int x , int y )
 	return data;
 };
 
+void print_Aud(Aud data)
+{
+	cout << "Audience id:\t" << data.aud_id << endl
+		<< "Build id:\t" << data.build_id << endl
+		<< "Chairs count:\t" << data.chairs_count << endl;
+	if (data.desk) { cout << "Desk in class:\t Yes" << endl << endl; }
+	else { cout << "Desk in class:\t No" << endl << endl; }
+}
+
 List::List() { 
 	Size = 0; 
 	head = nullptr;
@@ -59,3 +68,56 @@ void List::push_back(Aud data)
 		Size++;
 	}
 };
+
+void List::print_list()
+{
+	Element* current = this->head;
+	for (int i = 0;i < Size;i++)
+	{
+		cout << "N" << i + 1 << endl;
+		print_Aud(current->data);
+		current = current->next;
+	}
+}
+
+Aud List::find_aud_by_key(int aud_id)
+{
+	Element* current = this->head;
+	for (int i = 0; i < Size; i++)
+	{
+		if (current->data.aud_id == aud_id)
+		{
+			return current->data;
+		}
+		current = current->next;
+	}
+	Aud x = { -1,0,0,0 };
+	return x;
+}
+
+Aud List::find_aud_by_index(int index)
+{
+	Element* current = this->head;
+
+	for (int i = 1; i <= Size; i++)
+	{
+		if (i==index)
+		{
+			return current->data;
+		}
+		current = current->next;
+	}
+	Aud x = { -1,0,0,0 };
+	return x;
+}
+
+bool operator==(Aud x, Aud y)
+{
+	if (x.aud_id == y.aud_id && x.build_id == y.build_id && x.chairs_count == y.chairs_count && x.desk == y.desk)
+	{
+		return true;
+
+	}
+	else { return false; }
+
+}
