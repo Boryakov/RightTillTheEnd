@@ -35,19 +35,19 @@ public:
 
 	int GetSize() { return Size; }; // return size of list
 
-	void print_list();
+	void print_list(); // print current list
 	
-	Aud find_aud_by_key(int aud_id);
+	Aud find_aud_by_key(int aud_id); // found audience in list by audience id
 
-	Aud find_aud_by_index(int index);
+	Aud find_aud_by_index(int index); // found audience by index in list
 
-	void delete_aud_by_index(int index);
+	void delete_aud_by_index(int index); // delete audience in list by input index
 
-	void pop_front();
+	void pop_front();  // delete audience from the top of list
 
-	void clear_list();
+	void clear_list(); // cleans full list
 
-	void push_front(Aud data);
+	void push_front(Aud data); // insert audience to the top of list
 
 private:
 

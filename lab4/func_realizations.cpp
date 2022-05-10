@@ -20,17 +20,18 @@ void print_Aud(Aud data)
 		<< "Build id:\t" << data.build_id << endl
 		<< "Chairs count:\t" << data.chairs_count << endl;
 	if (data.desk) { cout << "Desk in class:\t Yes" << endl << endl; }
-	else { cout << "Desk in class:\t No" << endl << endl; }
+	else { cout << "Desk in class:\t No" << endl << endl; }  // just print audience structure one by one
 }
 
-List::List() { 
-	Size = 0; 
+List::List() { // constructor initializases head of list and list size;
+	Size = 0;  
 	head = nullptr;
 };
 
-List::~List()
+List::~List() // destructor , but idk what to insert here
 
 {
+	
 };
 
 Aud& List::operator[](const int index)
@@ -69,7 +70,7 @@ void List::push_back(Aud data)
 	}
 };
 
-void List::print_list()
+void List::print_list() // print every audience one by one ,using print_aud function, from head 
 {
 	Element* current = this->head;
 	for (int i = 0;i < Size;i++)
@@ -80,22 +81,22 @@ void List::print_list()
 	}
 }
 
-Aud List::find_aud_by_key(int aud_id)
+Aud List::find_aud_by_key(int aud_id) 
 {
 	Element* current = this->head;
 	for (int i = 0; i < Size; i++)
 	{
-		if (current->data.aud_id == aud_id)
+		if (current->data.aud_id == aud_id) // if current audience id == input audience id -> return structure
 		{
 			return current->data;
 		}
 		current = current->next;
 	}
-	Aud x = { -1,0,0,0 };
+	Aud x = { -1,0,0,0 }; // if audience wasn't found in list , return this audience like "false"
 	return x;
 }
 
-Aud List::find_aud_by_index(int index)
+Aud List::find_aud_by_index(int index) 
 {
 	Element* current = this->head;
 
@@ -103,17 +104,17 @@ Aud List::find_aud_by_index(int index)
 	{
 		if (i==index)
 		{
-			return current->data;
+			return current->data; // if current index == input index-> return structure
 		}
 		current = current->next;
 	}
-	Aud x = { -1,0,0,0 };
+	Aud x = { -1,0,0,0 }; // if audience wasn't found in list , return this audience like "false"
 	return x;
 }
 
 void List::delete_aud_by_index(int index)
 {
-	if (index == 1)
+	if (index == 1) // if index = 1 , just use pop_front 
 	{
 		pop_front();
 	}
@@ -123,34 +124,34 @@ void List::delete_aud_by_index(int index)
 		for (int i = 1; i < index-1;i++)
 		{
 			previous = previous->next;
-		}
-		Element* to_delete = previous->next;
-		previous->next = to_delete->next;
-		delete to_delete;
-		Size--;
+		} // find index-1 element;
+		Element* to_delete = previous->next; // creating tempoary variable to use his pointer on next obj and delete after
+		previous->next = to_delete->next; // take pointer on index + 1 object 
+		delete to_delete; // delete element from list by variable pointer
+		Size--; // decrease list size
 	}
 	
 }
 
 void List::pop_front()
 {
-	Element* temp = head;
-	head = head->next;
-	delete temp;
-	Size--;
+	Element* temp = head; 
+	head = head->next; //rewrite head on next item
+	delete temp; // delete first object
+	Size--;  // decrease list size
 }
 
 void List::clear_list()
 {
 	while (Size != 0)
 	{
-		pop_front();
+		pop_front(); // delete first item in list one by one while list will not be empty 
 	}
 }
 
-void List::push_front(Aud data)
+void List::push_front(Aud data) 
 {
-	head = new Element(data, head);
+	head = new Element(data, head);// create new head with pointer on old head
 	Size++;
 }
 
@@ -159,9 +160,9 @@ bool operator==(Aud x, Aud y)
 {
 	if (x.aud_id == y.aud_id && x.build_id == y.build_id && x.chairs_count == y.chairs_count && x.desk == y.desk)
 	{
-		return true;
-
+		return true; // overload operator == , if all variables in structure are same , return true
+					 // else return false
 	}
-	else { return false; }
+	else { return false; } 
 
 }
