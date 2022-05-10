@@ -15,6 +15,8 @@ bool operator==(Aud x, Aud y);
 
 void print_Aud(Aud data);
 
+Aud input_aud();
+
 Aud rand_Aud(int x = 0, int y = 0); // function which generate random audience and 
 									// if necessary accepts parametrs build id and audience id
 

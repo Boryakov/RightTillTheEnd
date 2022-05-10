@@ -1,6 +1,2 @@
-﻿  func_realizations.cpp
-C:\Users\ltava\source\repos\lab4\lab4\func_realizations.cpp(13,12): warning C4838: conversion from 'unsigned int' to 'int' requires a narrowing conversion
-  main.cpp
-  Generating Code...
-C:\Users\ltava\source\repos\lab4\lab4\func_realizations.cpp(49): warning C4715: 'List::operator[]': not all control paths return a value
+﻿  main.cpp
   lab4.vcxproj -> C:\Users\ltava\source\repos\lab4\x64\Debug\lab4.exe

@@ -23,6 +23,24 @@ void print_Aud(Aud data)
 	else { cout << "Desk in class:\t No" << endl << endl; }  // just print audience structure one by one
 }
 
+Aud input_aud()
+{
+	int a_num;
+	unsigned int b_num, quant_c;
+	bool desk;
+
+	cout << "Enter aud id: ";
+	cin >> a_num;
+	cout << "Enter build id: ";
+	cin >> b_num;
+	cout << "Enter quantity chairs: ";
+	cin >> quant_c;
+	cout << "Are the desk in audience (1 if true 0 if false) : ";
+	cin >> desk;
+
+	return Aud{a_num,b_num,quant_c,desk};
+}
+
 List::List() { // constructor initializases head of list and list size;
 	Size = 0;  
 	head = nullptr;
@@ -98,6 +116,11 @@ Aud List::find_aud_by_key(int aud_id)
 
 Aud List::find_aud_by_index(int index) 
 {
+	if (index > Size)
+	{
+		Aud x = { -2,0,0,0 };
+		return x;
+	}
 	Element* current = this->head;
 
 	for (int i = 1; i <= Size; i++)
